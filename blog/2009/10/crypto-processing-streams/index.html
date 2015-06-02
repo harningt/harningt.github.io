@@ -1,0 +1,54 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width"><title>eHarning.us - Crypto/Processing Streams</title><link rel="stylesheet" href="/css/main.css"><script src="http://ajax.googleapis.com/ajax/libs/jquery/1.2/jquery.min.js"></script><script src="/jquery.gatracker.js"></script><script src="/default.js"></script></head><body><div class="pageheader"><div class="header"><span><span class="parentlinks"><a href="/">eHarning.us</a>/<a href="/blog">Blog</a>/</span><span class="title">Crypto/Processing Streams</span></span></div></div><div id="content"><h1>Crypto/Processing Streams</h1><article><p>Ref: <a href="/wiki/cryptoface">cryptoface</a></p>
+<p>In the progress of designing a cryptography wrapper, I&#39;ve found a tricky dichotomy
+	in how libraries can handle processing data streams. From my findings, there&#39;s
+	at least three different ways in which data can be managed:</p>
+<ul>
+	<li>Chunk processing - <code>int f(in, inlen, out, &amp;outlen)</code></li>
+	<li>Callbacks - <code>int f(in, inlen, cb)</code></li>
+	<li>Stream abstractions - <code>int f(stream_in, stream_out)</code></li>
+</ul>
+<p>In designing a wrapper that can handle implementations that implement code in many
+	fashions, it&#39;s a tricky balancing act to figure out how to best work. One must
+	consider performance and the importance of a clean but powerful API.</p>
+<h1 id="chunk-processing">Chunk Processing</h1>
+<p>An example of basic chunk processing is that provided by <a href="http://mhash.sourceforge.net/">mhash</a>.
+	You feed it chunks of data, until the end where you get your data out. This is very
+	flexible, however it is quite a bit harder to implement when there are multiple
+	transformations and/or when the number of input chunks does not necessarily match
+	the number of output chunks.</p>
+<h1 id="callbacks">Callbacks</h1>
+<p>An example of callback handling is with MS CAPI&#39;s <a href="http://msdn.microsoft.com/en-us/library/aa380228(VS.85).aspx">CryptMsgOpenToDecode</a>.
+	The general workflow is that you setup a state machine and feed it data, when it
+	has data it can output, it will call your callback function with data as it can.
+	You are then responsible for copying the data out and putting it wherever it needs
+	to be. This is a powerful option, however it makes rewrapping as chunk-processing
+	a challenge.</p>
+<p>This can readly wrap chunk processing at the cost of an extra location to store the
+	output buffer (although this is most likely how native callback handler systems
+	work out).</p>
+<h1 id="stream-filter-abstractions">Stream Filter Abstractions</h1>
+<p>An example of stream abstractions in use are OpenSSL&#39;s <a href="http://www.openssl.org/docs/crypto/PKCS7_sign.html">PKCS7-sign</a>	and Crypto++&#39;s <a href="http://www.cryptopp.com/docs/ref/class_hash_filter.html">hash-filter</a>.
+	In reality, these are just complex wrappers around a callback system... however
+	they can provide clean theory and unification of both input/output handling.</p>
+<p>Stream filters can readily wrap chunk processing in the same way that callbacks can...
+	just take the input data from the chunk and pipe it forward.</p>
+<h1 id="resolution">Resolution</h1>
+<p>Since streams can usually be treated just like callbacks, the design can effectively
+	consider them equivalent for the purpose of wrapping. To best deal with the different
+	I/O mechanisms and deal with the differing libraries in a most efficient way, providing
+	both APIs may be the best option. The underlying wrapper interface will be able
+	to take advantage of the native interface, while differing APIs can take advantage
+	of a smart common codebase to help manage the differences.</p>
+<p>This &quot;smart common codebase&quot; would be code managing buffers/streaming/etc
+	in order to deal with the situation where too much data is available for the chunk
+	processing, but the callback/filter has already used up the data in providing the
+	additional data.</p>
+<p>If there&#39;s any other paradigms for filtering/processing data, please let me know,
+	either by commenting or emailing me. I&#39;ll post an update when possible with
+	more information, as I&#39;m certain there&#39;ll be many interesting in a one-lib
+	to crypt them all and make dealing with cryptography less complicated... since the
+	library will take care of the nasty details and distilling them to a single unified
+	interface.</p><p><span class="author">By
+ <a rel="author" href="mailto:harningt@gmail.com">Thomas Harning Jr.</a> 
+on
+ <time pubdate datetime="2009-10-6">2009-10-6</time></span></p></article></div><div id="footer" class="pagefooter"><div id="pageinfo"><span style="font-size: 0.75em"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons BY-NC-SA 4.0 License" style="border-width:0" width="80px" height="15px" src="/images/cc-by-nc-sa.png"></a><br>Additional permission details at <a xmlns:cc="http://creativecommons.org/ns#" href="/wiki/licensing" rel="cc::morePermissions">licensing</a>.</span></div><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins style="display:inline-block;width:468px;height:60px" data-ad-client="ca-pub-9675050573301887" data-ad-slot="6557091281" class="adsbygoogle"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div></body></html>

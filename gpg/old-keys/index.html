@@ -1,0 +1,209 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width"><title>eHarning.us - Old GPG Keys</title><link rel="stylesheet" href="/css/main.css"><script src="http://ajax.googleapis.com/ajax/libs/jquery/1.2/jquery.min.js"></script><script src="/jquery.gatracker.js"></script><script src="/default.js"></script></head><body><div class="pageheader"><div class="header"><span><span class="parentlinks"><a href="/">eHarning.us</a>/<a href="/gpg">GPG Keys</a>/</span><span class="title">Old GPG Keys</span></span></div></div><div id="content"><h1>Old GPG Keys</h1><article><p>I&#39;ve gone through a few iterations of keys in April 2011 while working out a
+	policy I should follow in dealing with keys.</p>
+<p>Short history of keys:</p>
+<ul>
+	<li>First iteration used a web of multiple independent keys</li>
+	<li>Second iteration used a single master key of huge size (8192-RSA)</li>
+	<li>Final iteration in April 2011: single master key (3072-RSA)</li>
+</ul>
+<h1 id="archived-history-details">Archived history details</h1>
+<p>I&#39;ve switched from many keys with chain of trust (listed below and revoked) to
+	one key with many subkeys.</p>
+<ul>
+	<li>Primary for important signatures and certification.</li>
+	<li>2 subkeys primarily for email / file encryption</li>
+	<li>Signing subkey for code signing/etc</li>
+</ul>
+<p>The primary key is only accessible from a USB drive that is accessed in a very protected
+	state. The other keys are relatively short-lived and &quot;less&quot; protected.</p>
+<p>The new key:</p>
+<pre><code>sec#  8192R/B7CE5252 2011-04-11
+    Key fingerprint = 5359 D88D 11DB 6981 C92E  A723 023C 6BB2 B7CE 5252
+uid                  Thomas Harning Jr &lt;harningt -ZAT- gmail ZOT com&gt;
+ssb   2048R/7B0654AB 2011-04-11 (email signing)
+ssb   2048R/72F567FF 2011-04-11 (email/file decryption)
+ssb   4096R/97E7681D 2011-04-11 (codesigning/etc)
+</code></pre><pre>
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+Version: GnuPG v2.0.16 (GNU/Linux)
+
+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
+j1X1zJJhghX9
+=ri9K
+-----END PGP PUBLIC KEY BLOCK-----
+</pre>
+
+<h2 id="old-master-key">Old master key</h2>
+<p>My prior primary protected signer is stored on a USB key only used on a clean box
+	not connected to the internet, such as when booted from a liveCD of some sort (ex:
+	Gentoo LiveCD for generation and signing of base device-usage keys).</p>
+<p>I included an image in the key since my appearance has not changed in quite some
+	time and it is an extra level of verification for the primary signer key.</p>
+<pre><code>pub   4096R/8D9F34E6 2011-04-10 [expires: 2019-04-08]
+      Key fingerprint = 3625 3755 C5A7 E411 555E  490B 696E 237E 8D9F 34E6
+uid                  Thomas Harning Jr (Key on USB in Safe) &lt;...&gt;
+uid                  Thomas Anthony Harning Jr. (Key on USB in Safe) &lt;...&gt;
+uid                  [jpeg image of size 2037]
+</code></pre>
+<h2 id="old-sub-keys-used-on-networked-machines">Old Sub-keys used on networked machines</h2>
+<pre><code>sec   2048R/A2A7C6C3 2011-04-10 [expires: 2014-04-09]
+      Key fingerprint = AA9B 2427 5F28 3563 5479  3BFE 9080 91F2 A2A7 C6C3
+uid                  Thomas Harning Jr (General Use on &#39;ionic&#39;) &lt;...&gt;
+ssb   2048R/9BF002E8 2011-04-10
+
+
+pub   2048R/FF75EFDB 2011-04-10 [expires: 2014-03-10]
+      Key fingerprint = 6FB8 58A3 DC10 B734 323E  2237 8696 2143 FF75 EFDB
+uid                  Thomas Harning Jr (General Use on &#39;gizmo&#39;) &lt;...&gt;
+sub   2048R/F786BBAB 2011-04-10 [expires: 2014-03-10]
+</code></pre></article></div><div id="footer" class="pagefooter"><div id="pageinfo"><span style="font-size: 0.75em"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons BY-NC-SA 4.0 License" style="border-width:0" width="80px" height="15px" src="/images/cc-by-nc-sa.png"></a><br>Additional permission details at <a xmlns:cc="http://creativecommons.org/ns#" href="/wiki/licensing" rel="cc::morePermissions">licensing</a>.</span></div><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins style="display:inline-block;width:468px;height:60px" data-ad-client="ca-pub-9675050573301887" data-ad-slot="6557091281" class="adsbygoogle"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div></body></html>

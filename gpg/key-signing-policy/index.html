@@ -1,0 +1,153 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width"><title>eHarning.us - GPG Key Signing Policy Version 1.1</title><link rel="stylesheet" href="/css/main.css"><script src="http://ajax.googleapis.com/ajax/libs/jquery/1.2/jquery.min.js"></script><script src="/jquery.gatracker.js"></script><script src="/default.js"></script></head><body><div class="pageheader"><div class="header"><span><span class="parentlinks"><a href="/">eHarning.us</a>/<a href="/gpg">GPG Keys</a>/</span><span class="title">GPG Key Signing Policy Version 1.1</span></span></div></div><div id="content"><h1>GPG Key Signing Policy Version 1.1</h1><article><p>GPG-Signed version of the document available at <a href="/gpg/key-signing-policy.mdwn.asc">gpg/key-signing-policy.mdwn.asc</a>.</p>
+<h2 id="changelog">Changelog</h2>
+<h3 id="1-1-2011-04-26">1.1 - 2011/04/26</h3>
+<ul>
+	<li>Adds Signature Level 2</li>
+	<li>Adds Policy Design Notice</li>
+	<li>Adds name normalization rule reference</li>
+	<li>Adds Reference Section</li>
+</ul>
+<h3 id="1-0-2011-04-22">1.0 - 2011/04/22</h3>
+<ul>
+	<li>Initial release of policy.</li>
+</ul>
+<h2 id="definitions">Definitions</h2>
+<p><strong>SIGNER</strong>: Thomas Harning Jr</p>
+<p><strong>SIGNEE</strong>: person or other entity receiving key signature services</p>
+<p><strong>SIGNEE KEYS</strong>: keys and associated UIDs <strong>SIGNEE</strong> to
+	be signed</p>
+<p><strong>SIGNATURE LEVEL</strong>: level of identity authentication assigned to signed
+	<strong>SIGNEE KEYS</strong></p>
+<p><strong>STANDARD SIGNING</strong>: standard signing process requiring a specified
+	level of authentication in order to obtain a specific level of signature.</p>
+<p><strong>ACCELERATED SIGNING</strong> process in which authentication level is reduced
+	due to prior engagement.</p>
+<h3 id="signer-key">SIGNER KEY</h3>
+<p>Used until superceded/compromised/etc</p>
+<p>NOTE: Email mangled to avoid email scanning.</p>
+<pre><code>sec#  3072R/B1DBAD54 2011-04-19
+    Key fingerprint = 2F0A FF2E A8A0 1485 C95B  8650 F0A4 C0F7 B1DB AD54
+uid                  Thomas Harning Jr &lt;harningt -ZAT- gmail -ZOT- com&gt;
+</code></pre>
+<p>Available at <a href="/gpg/B1DBAD54.gpg">gpg/B1DBAD54.gpg</a> or via key servers
+	(published directly to hkp://keys.gnupg.net)</p>
+<h2 id="policy-design-notice-v1-1-">Policy Design Notice (v1.1)</h2>
+<p>This policy is designed to carry version information with it to permit reasonable
+	analysis of past-issued signatures and future signatures that may be made. Each
+	section added/strongly modified will have version information attached in the form
+	(vVERSION), as well as near minor additions where practical.</p>
+<p>When a key is signed, the url will reference this document with the version in the
+	fragment identifier (portion after &#39;#&#39;) to allow identification of which
+	version of the key signing policy was used to perform the signature. For example,
+	a key signed 2011/04/26 would have the url:</p>
+<pre><code>http://www.eharning.us/gpg/key-signing-policy/#v1.1
+</code></pre>
+<p>If a section of text needs to be deleted from a future version, the general design
+	policy will be to move the content into a lower &quot;legacy&quot; section to segregate
+	it from the main body of active policy.</p>
+<h2 id="signer-location">SIGNER Location</h2>
+<p>SIGNER is in the vicinity of Fort Wayne, Indiana, USA. The easiest way to obtain
+	key signature services is to negotiating a public meeting place to exchange documents.</p>
+<h2 id="standard-signing">STANDARD SIGNING</h2>
+<p>Currently defined are requirements for Level 3 and Level 2 (v1.1) signatures.</p>
+<p>As a standard rule for any signing I perform, I expect mutual signatures be performed.
+	Level 1 (0x11 - no check) will not be considered an accepted mutual signature, a
+	Level 0 (0x10 - generic) would be considered however since it does not imply that
+	there was no authentication performed.</p>
+<p>For conflicting information regarding the name in a UID, I will follow the guidelines
+	outlined in <a href="http://wiki.cacert.org/PracticeOnNames">http://wiki.cacert.org/PracticeOnNames</a>	based on <a href="http://www.cacert.org/policy/AssurancePolicy.php#2.1">http://www.cacert.org/policy/AssurancePolicy.php#2.1</a>	as presented on the page as of 2011/04/26 for resolution.</p>
+<h3 id="signature-level-level-3-0x13-careful-check">SIGNATURE LEVEL: Level 3 - 0x13 - Careful Check</h3>
+<p>Prior to meeting, the SIGNEE must provide me with a means to obtain the SIGNEE KEYS
+	to be signed. This may be via email, web page reference, or key server reference.</p>
+<p>At the meeting, the SIGNEE must prove identity by means of identity card, passport,
+	or driver&#39;s licence. The SIGNEE must also provide a copy of the SIGNEE KEYS
+	fingerprints and UIDs to be signed.</p>
+<p>Alternatively, the SIGNEE&#39;s identity may be considered validated by verbal confirmation
+	by an individual I have known personally for least a year.</p>
+<p>To authenticate the SIGNEE&#39;s ownership of the SIGNEE KEYS, I will send the signatures
+	on the keys encrypted with one of the subkeys capable of encryption. If none is
+	available, other arrangements may be made.</p>
+<p>Any photo UIDs will be signed if they are representative of the SIGNEE. No photo
+	UIDs with logos or that look considerably different than the SIGNEE will be signed.</p>
+<h3 id="signature-level-level-2-0x12-casual-check-v1-1-">SIGNATURE LEVEL: Level 2 - 0x12 - Casual Check (v1.1)</h3>
+<p>&quot;Casual Checks&quot; require less authentication than &quot;Careful Checks&quot;
+	and can be used to help initiate the construction of a web-of-trust. Two methods
+	are currently authorized for performing &quot;Casual Checks&quot;:</p>
+<ul>
+	<li>Detailed scan of United States Passport or State Identification Card</li>
+	<li>PayPal-based exchange</li>
+</ul>
+<p>To authenticate using a detailed scan of a United States Passport or State Identification
+	Card:</p>
+<ol>
+	<li>Create a detailed photo-copy of the form(s) of identification you wish to use.</li>
+	<li>Handwrite your email address and key IDs on the copy and hand-sign it</li>
+	<li>Scan this new document (preferably to a PDF or Jpeg) and prepare it as a digitally
+		signed email or file using the key ID you wish to use</li>
+	<li>Email it to harningt AT gmail DOT com</li>
+</ol>
+<p>To authenticate using a PayPal-based exchange of money:</p>
+<ol>
+	<li>Send me $1 USD to my PayPal account using &quot;harningt AT gmail DOT com&quot;
+		as the email address to send funds to.</li>
+	<li>In the &#39;Subject&#39; field, let me know you wish key signing.</li>
+	<li>In the &#39;Message&#39; field, give account matching email address and key ID</li>
+	<li>Send a separate email to the address signed with the key ID to be signed.</li>
+	<li>After I have received these, I will send back the $1 and the signed key.</li>
+</ol>
+<p>No photo UIDs will be signed with the currently stated Level 2 authentication mechanisms.
+</p>
+<h2 id="accelerated-signing">ACCELERATED SIGNING</h2>
+<p>The process of ACCELERATED SIGNING may be performed in a few cases:</p>
+<ul>
+	<li>SIGNEE KEYS are superceded</li>
+	<li>SIGNEE has additional SIGNEE KEYS to be signed</li>
+	<li>SIGNER KEY is revoked</li>
+</ul>
+<p>Since ACCELERATED SIGNING is a process by which authentication level is reduced within
+	the context of trust of prior encounters, judgement is reserved for following through
+	with the process. Following are some example factors that may be used in the judgement
+	process:</p>
+<ol>
+	<li>The SIGNEE KEYS must not have been revoked as:
+		<ul>
+			<li>Compromised - no trust can be given to SIGNEE KEY signatures</li>
+			<li>Lost - cannot receive SIGNEE KEY signature</li>
+		</ul>
+	</li>
+	<li>Signature revocations on SIGNEE KEYS will be considered within the context of the
+		&quot;trust&quot; level associated with given 3rd party</li>
+	<li>Subset of email addresses for UIDs of SIGNEE KEYS should be reachable</li>
+</ol>
+<p>ACCELERATED SIGNING will almost always require the usage of a prior signed SIGNEE
+	KEY to provide a chain-of-trust.</p>
+<p>ACCELERATED SIGNING may also affect the SIGNATURE LEVEL applied to the SIGNEE KEYS.</p>
+<h2 id="delivery-of-signatures">Delivery of Signatures</h2>
+<p>Signature data will be encrypted using an associated encryption key of the SIGNEE
+	KEYS and sent to the associated emails in the following way:
+</p>
+<ul>
+	<li>Any non-email UIDs will be sent along with all of the emails</li>
+	<li>If no email UIDs are to be signed, then an alternate contact email will be used.</li>
+	<li>If an email bounces, a warning email will be sent to the other available addresses,
+		expecting SIGNEE to fix the problem and respond for retry. At most three attempts
+		will be made, until either email does not bounce or SIGNEE cancels signature on
+		the failing UID</li>
+	<li>If a response is recieved that a signature was not requested, a warning email will
+		be sent to the other available addresses requesting clarification. If no satisfactory
+		clarification is made, the specific UID signature is revoked due to lack of proof-of-ownership
+		of the email address.</li>
+</ul>
+<h2 id="email-contact-policy">Email Contact Policy</h2>
+<p>At any time a SIGNEE may request any the following policies take place:</p>
+<ul>
+	<li>SIGNER may not initiate contact, such for SIGNER KEY revocation</li>
+	<li>SIGNER may not use ACCELERATED SIGNING process for authentications</li>
+	<li>SIGNER may not respond to any communications from SIGNEE</li>
+	<li>SIGNER may not change policies in place except on some authorization condition (ex:
+		passcode in email)</li>
+</ul>
+<h2 id="references-attribution">References / Attribution</h2>
+<h3 id="addition-of-level-2-casual-check">Addition of Level 2 - Casual Check</h3>
+<p>For version 1.1 of the document, I borrowed the general rules for casual signatures
+	from <a href="http://pthree.org/my-pgp-key-signing-policy/">Aaron Toponce&#39;s Key Signing Policy</a>.</p></article></div><div id="footer" class="pagefooter"><div id="pageinfo"><span style="font-size: 0.75em"><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons BY-NC-SA 4.0 License" style="border-width:0" width="80px" height="15px" src="/images/cc-by-nc-sa.png"></a><br>Additional permission details at <a xmlns:cc="http://creativecommons.org/ns#" href="/wiki/licensing" rel="cc::morePermissions">licensing</a>.</span></div><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins style="display:inline-block;width:468px;height:60px" data-ad-client="ca-pub-9675050573301887" data-ad-slot="6557091281" class="adsbygoogle"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div></body></html>
