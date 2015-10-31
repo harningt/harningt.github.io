@@ -1,15 +1,13 @@
 <!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width"><title>eHarning.us - ehCrypt</title><script defer src="//ajax.googleapis.com/ajax/libs/jquery/1.2/jquery.min.js"></script><script defer src="/jquery.gatracker.js"></script><script defer src="/default.js"></script></head><body><div class="pageheader"><div class="header"><span><span class="parentlinks"><a href="/">eHarning.us</a>/<a href="/wiki/">wiki</a>/</span><span class="title">ehCrypt</span></span></div></div><div id="content"><h1>ehCrypt</h1><article><p>General Design:</p>
 <ul>
-	<li>Basic required arguments: provider, algorithm, algorithm parameters, key specification</li>
-	<li>Parameters available by Name and <code>ID</code></li>
-	<li>Operations can be manually bound for performance. Function pointers can be retreived
-		from algorithms</li>
-	<li>Encryption/Decryption mechanisms available with algorithm parameters and key specification
-		separately.
-	</li>
-	<li>Streams are available (may actually point to an underlying stream (ex: OpenSSL BIO)</li>
-	<li>Asynchronous operations should be available. begin_hash, end_hash ... a la .Net-type
-		API</li>
+<li>Basic required arguments: provider, algorithm, algorithm parameters, key specification</li>
+<li>Parameters available by Name and <code>ID</code></li>
+<li>Operations can be manually bound for performance.
+  Function pointers can be retreived from algorithms</li>
+<li>Encryption/Decryption mechanisms available with algorithm parameters and key specification
+  separately.</li>
+<li>Streams are available (may actually point to an underlying stream (ex: OpenSSL BIO)</li>
+<li>Asynchronous operations should be available. begin_hash, end_hash ... a la .Net-type API</li>
 </ul>
 <p>Message Digest</p>
 <pre><code>digestAlg = get_digest_alg(name)

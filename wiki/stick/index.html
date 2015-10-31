@@ -1,90 +1,83 @@
 <!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width"><title>eHarning.us - Stick - Bugs with branches</title><script defer src="//ajax.googleapis.com/ajax/libs/jquery/1.2/jquery.min.js"></script><script defer src="/jquery.gatracker.js"></script><script defer src="/default.js"></script></head><body><div class="pageheader"><div class="header"><span><span class="parentlinks"><a href="/">eHarning.us</a>/<a href="/wiki/">wiki</a>/</span><span class="title">Stick - Bugs with branches</span></span></div></div><div id="content"><h1>Stick - Bugs with branches</h1><article><ul>
-	<li>git://git.eharning.us/stick</li>
-	<li><a href="http://git.eharning.us/cgi-bin/gitweb.cgi?p=stick.git">http://git.eharning.us/cgi-bin/gitweb.cgi?p=stick.git</a></li>
+<li>git://git.eharning.us/stick</li>
+<li><a href="http://git.eharning.us/cgi-bin/gitweb.cgi?p=stick.git">http://git.eharning.us/cgi-bin/gitweb.cgi?p=stick.git</a></li>
 </ul>
 <h2 id="concept">Concept</h2>
 <p><a href="/wiki/stick/discussion/">Discussion</a></p>
 <h3 id="entities">Entities</h3>
 <ul>
-	<li>BUGS - Bug repository</li>
-	<li>REPO - Source code repository</li>
+<li>BUGS - Bug repository</li>
+<li>REPO - Source code repository</li>
 </ul>
 <h4 id="bugs">BUGS</h4>
 <h5 id="bug-items">Bug Items</h5>
 <p>Contains a collection of bug-items (BI) with the following attributes:</p>
 <ul>
-	<li>ID - unique identifier of the bug</li>
-	<li>From - RFC2822 identifier</li>
-	<li>Date</li>
-	<li>Subject</li>
-	<li>Affects - list of identifiers into REPO (may begin w/ &#39;-&#39; to remove item)</li>
-	<li>Status - &#39;status&#39; of the bug</li>
-	<li>[Revision] - REPO identifier associated w/ this message</li>
-	<li>[IsHead] - should this be considered the &#39;head&#39; bug item?</li>
-	<li>Message-Body</li>
+<li>ID - unique identifier of the bug</li>
+<li>From - RFC2822 identifier</li>
+<li>Date</li>
+<li>Subject</li>
+<li>Affects - list of identifiers into REPO (may begin w/ &#39;-&#39; to remove item)</li>
+<li>Status - &#39;status&#39; of the bug</li>
+<li>[Revision] - REPO identifier associated w/ this message</li>
+<li>[IsHead] - should this be considered the &#39;head&#39; bug item?</li>
+<li>Message-Body</li>
 </ul>
 <p>The basic storage is expected to be an RFC 2822 type of message.</p>
 <h6 id="operations">Operations</h6>
 <p>To make the interfaces as simple as possible, the operations list should be minimal.</p>
 <ul>
-	<li>Query - search for bugs based on attribute-values</li>
-	<li>New - create a &#39;stored&#39; bug with a new unique ID</li>
-	<li>Append? - add a new message for a given unique ID</li>
+<li>Query - search for bugs based on attribute-values</li>
+<li>New   - create a &#39;stored&#39; bug with a new unique ID</li>
+<li>Append? - add a new message for a given unique ID</li>
 </ul>
 <p>Internal ops - applied from REPO hooks or automatically</p>
 <ul>
-	<li>AppendGenerated - add a new generated message for a given unique ID</li>
-	<li>RefreshGenerated - in cooperations w/ REPO check for update/remove on a generated
-		message</li>
+<li>AppendGenerated - add a new generated message for a given unique ID</li>
+<li>RefreshGenerated - in cooperations w/ REPO check for update/remove on a generated message</li>
 </ul>
 <h6 id="storage">Storage</h6>
 <p>This data is expected to be split into two categories:</p>
 <ul>
-	<li>Stored</li>
-	<li>Generated</li>
+<li>Stored</li>
+<li>Generated</li>
 </ul>
-<p>Generated items will be stored in a cache, ready to be regenerated/cleared as need-be
-	due to changes in repository. Ex: A &#39;rebase&#39; event could cause an item to
-	be eliminated.</p>
+<p>Generated items will be stored in a cache, ready to be regenerated/cleared as need-be due to changes in repository. Ex: A &#39;rebase&#39; event could cause an item to be eliminated.</p>
 <h6 id="handling">Handling</h6>
-<p>Since this data is probably not the easiest to search in a meaningful way, a cache
-	is expected to be created on demand.</p>
-<p>An example caching mechanism would be a normalized SQLite database containing data
-	items likely w/ indexes on the following:</p>
+<p>Since this data is probably not the easiest to search in a meaningful way, a cache is expected to be created on demand.</p>
+<p>An example caching mechanism would be a normalized SQLite database containing data items likely w/ indexes on the following:</p>
 <ul>
-	<li>ID</li>
-	<li>Affects</li>
-	<li>Revision</li>
-	<li>Status</li>
+<li>ID</li>
+<li>Affects</li>
+<li>Revision</li>
+<li>Status</li>
 </ul>
 <h6 id="distribution">Distribution</h6>
-<p>The BUGS data should be stored in a repository with a plain-old directories/files
-	structure. How this layout is to work is yet to be resolved...</p>
+<p>The BUGS data should be stored in a repository with a plain-old directories/files structure.  How this layout is to work is yet to be resolved...</p>
 <p>Distribution can be alongside the primary repository as its own branch.</p>
-<p>Directory layout: BUGS/ Bug Unique ID 1/ Bug Unique ID 2/ HEAD
-	<optional - contains
-	text reference to the head bug item>
-		Bug Item 1 - Unique ID Bug Item 2 - Unique ID</p>
+<p>Directory layout:
+    BUGS/
+        Bug Unique ID 1/
+        Bug Unique ID 2/
+            HEAD <optional - contains text reference to the head bug item>
+            Bug Item 1 - Unique ID
+            Bug Item 2 - Unique ID</p>
 <h6 id="questions">Questions</h6>
 <ul>
-	<li>Is there any sane way to integrate w/ email client since they already speak RFC
-		2822?... or would this lead to trouble.</li>
-	<li>How should the &#39;main&#39; BI be handled... the one that marks the &#39;head&#39;
-		subject/etc..</li>
-	<li>How should BI merges be handled (see above for &#39;head&#39; item alteration)</li>
-	<li>Distribution... how should modifications to a BI be ordered (last one for specific
-		history is truth)?</li>
+<li>Is there any sane way to integrate w/ email client since they already speak RFC 2822?... or would this lead to trouble.</li>
+<li>How should the &#39;main&#39; BI be handled... the one that marks the &#39;head&#39; subject/etc..</li>
+<li>How should BI merges be handled (see above for &#39;head&#39; item alteration)</li>
+<li>Distribution... how should modifications to a BI be ordered (last one for specific history is truth)?</li>
 </ul>
 <h4 id="repo">REPO</h4>
 <p>The storage location for the source code that BUGS is associated with.</p>
-<p>Initially this will be Git, but it should be easy to adapt due to the limited operation
-	set.</p>
+<p>Initially this will be Git, but it should be easy to adapt due to the limited operation set.</p>
 <h5 id="operations">Operations</h5>
 <ul>
-	<li>Log (START..STOP) - obtain a list of log messages from START to STOP Used for parsing
-		out &#39;generated&#39; bug messages (ex: fix locations, progress markers)</li>
-	<li>Branches - obtain a list of branches</li>
+<li>Log (START..STOP) - obtain a list of log messages from START to STOP
+Used for parsing out &#39;generated&#39; bug messages (ex: fix locations, progress markers)</li>
+<li>Branches - obtain a list of branches</li>
 </ul>
 <h5 id="usage-of-hooks-">Usage of &#39;hooks&#39;</h5>
-<p>To avoid having to &#39;always&#39; query for change logs, hooks may be used to assist
-	the bug system w/ knowledge about events as they happen rather than on-demand.</p></article></div><div id="footer" class="pagefooter"><div id="pageinfo"><span style="font-size: 0.75em"><a rel="license" href="//creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons BY-NC-SA 4.0 License" style="border-width:0" width="80px" height="15px" src="/images/cc-by-nc-sa.png"></a><br>Additional permission details at <a xmlns:cc="http://creativecommons.org/ns#" href="/wiki/licensing/" rel="cc::morePermissions">licensing</a>.</span></div><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-9675050573301887" data-ad-slot="2763075597" class="adsbygoogle"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><noscript><link rel="stylesheet" href="/css/main.css"></noscript></body></html>
+<p>To avoid having to &#39;always&#39; query for change logs, hooks may be used to assist the bug system w/ knowledge about events as they happen rather than on-demand.</p>
+</article></div><div id="footer" class="pagefooter"><div id="pageinfo"><span style="font-size: 0.75em"><a rel="license" href="//creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons BY-NC-SA 4.0 License" style="border-width:0" width="80px" height="15px" src="/images/cc-by-nc-sa.png"></a><br>Additional permission details at <a xmlns:cc="http://creativecommons.org/ns#" href="/wiki/licensing/" rel="cc::morePermissions">licensing</a>.</span></div><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-9675050573301887" data-ad-slot="2763075597" class="adsbygoogle"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><noscript><link rel="stylesheet" href="/css/main.css"></noscript></body></html>

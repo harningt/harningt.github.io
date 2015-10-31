@@ -1,21 +1,22 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width"><title>eHarning.us - Old GPG Keys</title><script defer src="//ajax.googleapis.com/ajax/libs/jquery/1.2/jquery.min.js"></script><script defer src="/jquery.gatracker.js"></script><script defer src="/default.js"></script></head><body><div class="pageheader"><div class="header"><span><span class="parentlinks"><a href="/">eHarning.us</a>/<a href="/gpg/">GPG Keys</a>/</span><span class="title">Old GPG Keys</span></span></div></div><div id="content"><h1>Old GPG Keys</h1><article><p>I&#39;ve gone through a few iterations of keys in April 2011 while working out a
-	policy I should follow in dealing with keys.</p>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width"><title>eHarning.us - Old GPG Keys</title><script defer src="//ajax.googleapis.com/ajax/libs/jquery/1.2/jquery.min.js"></script><script defer src="/jquery.gatracker.js"></script><script defer src="/default.js"></script></head><body><div class="pageheader"><div class="header"><span><span class="parentlinks"><a href="/">eHarning.us</a>/<a href="/gpg/">GPG Keys</a>/</span><span class="title">Old GPG Keys</span></span></div></div><div id="content"><h1>Old GPG Keys</h1><article><p>I&#39;ve gone through a few iterations of keys in April 2011 while
+working out a policy I should follow in dealing with keys.</p>
 <p>Short history of keys:</p>
 <ul>
-	<li>First iteration used a web of multiple independent keys</li>
-	<li>Second iteration used a single master key of huge size (8192-RSA)</li>
-	<li>Final iteration in April 2011: single master key (3072-RSA)</li>
+<li>First iteration used a web of multiple independent keys</li>
+<li>Second iteration used a single master key of huge size (8192-RSA)</li>
+<li>Final iteration in April 2011: single master key (3072-RSA)</li>
 </ul>
 <h1 id="archived-history-details">Archived history details</h1>
-<p>I&#39;ve switched from many keys with chain of trust (listed below and revoked) to
-	one key with many subkeys.</p>
+<p>I&#39;ve switched from many keys with chain of trust (listed below and revoked)
+to one key with many subkeys.</p>
 <ul>
-	<li>Primary for important signatures and certification.</li>
-	<li>2 subkeys primarily for email / file encryption</li>
-	<li>Signing subkey for code signing/etc</li>
+<li>Primary for important signatures and certification.</li>
+<li>2 subkeys primarily for email / file encryption</li>
+<li>Signing subkey for code signing/etc</li>
 </ul>
-<p>The primary key is only accessible from a USB drive that is accessed in a very protected
-	state. The other keys are relatively short-lived and &quot;less&quot; protected.</p>
+<p>The primary key is only accessible from a USB drive that is
+accessed in a very protected state.  The other keys are
+relatively short-lived and &quot;less&quot; protected.</p>
 <p>The new key:</p>
 <pre><code>sec#  8192R/B7CE5252 2011-04-11
     Key fingerprint = 5359 D88D 11DB 6981 C92E  A723 023C 6BB2 B7CE 5252
@@ -183,19 +184,21 @@ j1X1zJJhghX9
 -----END PGP PUBLIC KEY BLOCK-----
 </pre>
 
+
 <h2 id="old-master-key">Old master key</h2>
-<p>My prior primary protected signer is stored on a USB key only used on a clean box
-	not connected to the internet, such as when booted from a liveCD of some sort (ex:
-	Gentoo LiveCD for generation and signing of base device-usage keys).</p>
-<p>I included an image in the key since my appearance has not changed in quite some
-	time and it is an extra level of verification for the primary signer key.</p>
+<p>My prior primary protected signer is stored on a USB key only used on 
+a clean box not connected to the internet, such as when booted from a 
+liveCD of some sort (ex: Gentoo LiveCD for generation and signing of 
+base device-usage keys).</p>
+<p>I included an image in the key since my appearance has not changed in 
+quite some time and it is an extra level of verification for the primary 
+signer key.</p>
 <pre><code>pub   4096R/8D9F34E6 2011-04-10 [expires: 2019-04-08]
       Key fingerprint = 3625 3755 C5A7 E411 555E  490B 696E 237E 8D9F 34E6
 uid                  Thomas Harning Jr (Key on USB in Safe) &lt;...&gt;
 uid                  Thomas Anthony Harning Jr. (Key on USB in Safe) &lt;...&gt;
 uid                  [jpeg image of size 2037]
-</code></pre>
-<h2 id="old-sub-keys-used-on-networked-machines">Old Sub-keys used on networked machines</h2>
+</code></pre><h2 id="old-sub-keys-used-on-networked-machines">Old Sub-keys used on networked machines</h2>
 <pre><code>sec   2048R/A2A7C6C3 2011-04-10 [expires: 2014-04-09]
       Key fingerprint = AA9B 2427 5F28 3563 5479  3BFE 9080 91F2 A2A7 C6C3
 uid                  Thomas Harning Jr (General Use on &#39;ionic&#39;) &lt;...&gt;

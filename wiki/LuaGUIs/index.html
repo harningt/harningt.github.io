@@ -1,40 +1,42 @@
 <!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width"><title>eHarning.us - GUIs for Lua</title><script defer src="//ajax.googleapis.com/ajax/libs/jquery/1.2/jquery.min.js"></script><script defer src="/jquery.gatracker.js"></script><script defer src="/default.js"></script></head><body><div class="pageheader"><div class="header"><span><span class="parentlinks"><a href="/">eHarning.us</a>/<a href="/wiki/">wiki</a>/</span><span class="title">GUIs for Lua</span></span></div></div><div id="content"><h1>GUIs for Lua</h1><article><p>Options for Graphical User Interfaces in Lua are somewhat limited.</p>
 <h1 id="embed-lua-in-gui-app">Embed Lua in GUI app</h1>
-<p>An option that is almost always available it to take a Lua application and design
-	it to fit inside of some other language&#39;s GUI framework.</p>
-<p>This can be done with callbacks/etc to Lua... as would most GUI frameworks interfacing
-	Lua.</p>
-<p>The downside is that it is likely to be more of a challenge to use Lua to dynamically
-	piece together GUI components.</p>
+<p>An option that is almost always available it to take a Lua application and
+design it to fit inside of some other language&#39;s GUI framework.</p>
+<p>This can be done with callbacks/etc to Lua... as would most GUI frameworks
+interfacing Lua.</p>
+<p>The downside is that it is likely to be more of a challenge to use Lua
+to dynamically piece together GUI components.</p>
 <h1 id="objective-c-bridge">Objective-C Bridge</h1>
-<p>If using Objective-C, one could, for example, use Cocoa to build your user interface,
-	through which Lua should have full access to UI components and have a reasonably
-	easy time hooking into the framework.</p>
-<p>The downside is that the bridge needs TLC and has not been tested much on non-OSX
-	varieties (namely, GNUStep).</p>
+<p>If using Objective-C, one could, for example, use Cocoa to build your user
+interface, through which Lua should have full access to UI components and
+have a reasonably easy time hooking into the framework.</p>
+<p>The downside is that the bridge needs TLC and has not been tested much on
+non-OSX varieties (namely, GNUStep).</p>
 <h1 id="luagtk">LuaGTK</h1>
-<p>This is a nice cross-platform interface to the GTK libraries. Windows, OSX, and Linux
-	provide GTK libraries to which this binds.</p>
-<p>Previous experience with this has proven problematic, particularly due to the use
-	of FFI and problems with x86_64 support. It appears that the library has gone through
-	some relatively large changes recently, so I may be in luck.</p>
+<p>This is a nice cross-platform interface to the GTK libraries.
+Windows, OSX, and Linux provide GTK libraries to which this binds.</p>
+<p>Previous experience with this has proven problematic, particularly due to
+the use of FFI and problems with x86_64 support.  It appears that the
+library has gone through some relatively large changes recently, so
+I may be in luck.</p>
 <h1 id="wxlua">wxLua</h1>
-<p>This interfaces with the wxWindows library which provides a common C++ API to various
-	&#39;native&#39; underlying toolkits. This can be an option for an application which
-	hopes to have a native look... though some things can be problematic, ESP w/ Aqua
-	(OSX) GUI behavior/appearance guidelines.</p>
-<p>Recently this library broke out into the Lua module mode of operations, allowing
-	use of it w/o having to use the &#39;wxLua&#39; executable. I have yet to test this
-	kit out.</p>
+<p>This interfaces with the wxWindows library which provides a common C++ API
+to various &#39;native&#39; underlying toolkits.  This can be an option for an
+application which hopes to have a native look... though some things can
+be problematic, ESP w/ Aqua (OSX) GUI behavior/appearance guidelines.</p>
+<p>Recently this library broke out into the Lua module mode of operations,
+allowing use of it w/o having to use the &#39;wxLua&#39; executable.  I have yet
+to test this kit out.</p>
 <h1 id="lua-qt">Lua + Qt</h1>
-<p>There appears to be a few attempts at implementing a Qt binding for Lua... not sure
-	which is the most complete/stable.</p>
+<p>There appears to be a few attempts at implementing a Qt binding for Lua...
+not sure which is the most complete/stable.</p>
 <h1 id="lua-fltk">Lua + FLTK</h1>
 <p>There was a binding for Lua 4.0 that was open.. however that is a bit expired.</p>
-<p>There has also appeared a recent binding, however that was bundled up in a project
-	to which the license/existence was somewhat of a mess...</p>
-<p>This sort of option would be nice, as it allows for a uniform lightweight UI for
-	many platforms.</p>
+<p>There has also appeared a recent binding, however that was bundled up
+in a project to which the license/existence was somewhat of a mess...</p>
+<p>This sort of option would be nice, as it allows for a uniform lightweight
+UI for many platforms.</p>
 <h1 id="others">Others</h1>
-<p>.... still looking for others out there... hopefully should have better information
-	in the near future, perhaps with useful links...</p></article></div><div id="footer" class="pagefooter"><div id="pageinfo"><span style="font-size: 0.75em"><a rel="license" href="//creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons BY-NC-SA 4.0 License" style="border-width:0" width="80px" height="15px" src="/images/cc-by-nc-sa.png"></a><br>Additional permission details at <a xmlns:cc="http://creativecommons.org/ns#" href="/wiki/licensing/" rel="cc::morePermissions">licensing</a>.</span></div><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-9675050573301887" data-ad-slot="2763075597" class="adsbygoogle"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><noscript><link rel="stylesheet" href="/css/main.css"></noscript></body></html>
+<p>.... still looking for others out there... hopefully should have better
+information in the near future, perhaps with useful links...</p>
+</article></div><div id="footer" class="pagefooter"><div id="pageinfo"><span style="font-size: 0.75em"><a rel="license" href="//creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons BY-NC-SA 4.0 License" style="border-width:0" width="80px" height="15px" src="/images/cc-by-nc-sa.png"></a><br>Additional permission details at <a xmlns:cc="http://creativecommons.org/ns#" href="/wiki/licensing/" rel="cc::morePermissions">licensing</a>.</span></div><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-9675050573301887" data-ad-slot="2763075597" class="adsbygoogle"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><noscript><link rel="stylesheet" href="/css/main.css"></noscript></body></html>

@@ -1,46 +1,46 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width"><title>eHarning.us - Lumina - A Sane OO Networking Architecture in C</title><script defer src="//ajax.googleapis.com/ajax/libs/jquery/1.2/jquery.min.js"></script><script defer src="/jquery.gatracker.js"></script><script defer src="/default.js"></script></head><body><div class="pageheader"><div class="header"><span><span class="parentlinks"><a href="/">eHarning.us</a>/<a href="/blog/">Blog</a>/</span><span class="title">Lumina - A Sane OO Networking Architecture in C</span></span></div></div><div id="content"><h1>Lumina - A Sane OO Networking Architecture in C</h1><article><p>Now that I&#39;ve found a little more free time for personal projects, I&#39;m going
-	to try to blog about project progress and discussions... well... monologues until
-	other&#39;s put their valuable 2-cents in.</p>
-<p>In the past I&#39;ve worked on putting together a network protocol for a project
-	in Java. One of the issues I ran into was the apparent lack of a library like
-	<a
-	href="http://libevent.org/">libevent</a> or
-		<a href="http://software.schmorp.de/pkg/libev.html">libev</a> to make lightweight
-		handling of multiple clients possible.
-</p>
-<p><a href="https://mina.apache.org/">Apache Mina</a> takes a different approach to
-	network programming such that you effectively construct data handlers and let the
-	framework handle data flow.</p>
-<p>I thought that Lua and C could take advantage of such an approach in that concepts
-	such as <a href="https://www.wikipedia.org/wiki/Separation_of_Concerns">Separation of Concerns</a>	and basic <a href="https://www.wikipedia.org/wiki/Abstraction_(computer_science)">abstraction</a>.
-	I began architecting
-	<a href="/wiki/lumina/">Lumina</a> to fill the void.</p>
-<p>Some design choices/requirements have made this a little more challenging, but have
-	important reasons.</p>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width"><title>eHarning.us - Lumina - A Sane OO Networking Architecture in C</title><script defer src="//ajax.googleapis.com/ajax/libs/jquery/1.2/jquery.min.js"></script><script defer src="/jquery.gatracker.js"></script><script defer src="/default.js"></script></head><body><div class="pageheader"><div class="header"><span><span class="parentlinks"><a href="/">eHarning.us</a>/<a href="/blog/">Blog</a>/</span><span class="title">Lumina - A Sane OO Networking Architecture in C</span></span></div></div><div id="content"><h1>Lumina - A Sane OO Networking Architecture in C</h1><article><p>Now that I&#39;ve found a little more free time for personal projects,
+I&#39;m going to try to blog about project progress and discussions...
+well... monologues until other&#39;s put their valuable 2-cents in.</p>
+<p>In the past I&#39;ve worked on putting together a network
+protocol for a project in Java.  One of the issues I ran
+into was the apparent lack of a library like <a href="http://libevent.org/">libevent</a> or
+<a href="http://software.schmorp.de/pkg/libev.html">libev</a> to make lightweight handling of multiple clients
+possible.</p>
+<p><a href="https://mina.apache.org/">Apache Mina</a> takes a different approach to network
+programming such that you effectively construct data
+handlers and let the framework handle data flow.</p>
+<p>I thought that Lua and C could take advantage of such an
+approach in that concepts such as <a href="https://www.wikipedia.org/wiki/Separation_of_Concerns">Separation of Concerns</a>
+and basic <a href="https://www.wikipedia.org/wiki/Abstraction_(computer_science)">abstraction</a>.  I began architecting
+<a href="/wiki/lumina/">Lumina</a> to fill the void.</p>
+<p>Some design choices/requirements have made this a little
+more challenging, but have important reasons.</p>
 <h4 id="must-compile-as-c">Must compile as C</h4>
-<p>This requirement limits some code reuse particularly in that many basic data structures
-	are necessary, such as dynamically growing arrays and maps. Also object-orientation
-	must be hand-made. <a href="https://en.wikipedia.org/wiki/GLib">glib</a> offers
-	some of these abstractions for C, but it seems an overly large dependency in this
-	framework.</p>
-<p>So far this does not preclude the potential use of some other language that can preprocess
-	into C, so long as it creates intelligible output and does not require writing extensive
-	glue.
-</p>
+<p>This requirement limits some code reuse particularly in that
+many basic data structures are necessary, such as dynamically growing arrays and maps.  Also object-orientation must be hand-made.  <a href="https://en.wikipedia.org/wiki/GLib">glib</a> offers some of these
+abstractions for C, but it seems an overly large dependency
+in this framework.</p>
+<p>So far this does not preclude the potential use of some other
+language that can preprocess into C, so long as it creates
+intelligible output and does not require writing extensive
+glue.</p>
 <h4 id="must-provide-cross-platform-interface">Must provide cross-platform interface</h4>
-<p>Basically this means that dependencies need to be well thought-out and where necessary
-	be replaceable behind the scenes. The next requirement for the ability to have multiple
-	potential implementations makes this easier.</p>
+<p>Basically this means that dependencies need to be well
+thought-out and where necessary be replaceable behind the
+scenes.  The next requirement for the ability to have
+multiple potential implementations makes this easier.</p>
 <h4 id="must-have-flexible-implementation-options">Must have flexible implementation options</h4>
-<p>This effectively means that the dependencies for the core should be at an absolute
-	minimum. If the core interfaces are used, swapping out the backend (<a href="http://libevent.org/">libevent</a>/
-	<a
-	href="http://software.schmorp.de/pkg/libev.html">libev</a>/IOCP) shouldn&#39;t affect the library user&#39;s experience.</p>
+<p>This effectively means that the dependencies for the core
+should be at an absolute minimum.  If the core interfaces
+are used, swapping out the backend (<a href="http://libevent.org/">libevent</a>/<a href="http://software.schmorp.de/pkg/libev.html">libev</a>/IOCP)
+shouldn&#39;t affect the library user&#39;s experience.</p>
 <h4 id="must-provide-a-lua-accessible-module">Must provide a Lua-accessible module</h4>
-<p>This decision will require some minor dicipline in interface design, however it will
-	make the framework that much more usable.
-</p>
-<p>Any suggestions as to resolving any of the issues pointed out would be greatly appreciated.</p><p><span class="author">By
+<p>This decision will require some minor dicipline in interface
+design, however it will make the framework that much more
+usable.</p>
+<p>Any suggestions as to resolving any of the issues pointed out
+would be greatly appreciated.</p>
+<p><span class="author">By
  <a rel="author" href="mailto:harningt@gmail.com">Thomas Harning Jr.</a> 
 on
  <time pubdate datetime="2008-6-20">2008-6-20</time></span></p></article></div><div id="footer" class="pagefooter"><div id="pageinfo"><span style="font-size: 0.75em"><a rel="license" href="//creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons BY-NC-SA 4.0 License" style="border-width:0" width="80px" height="15px" src="/images/cc-by-nc-sa.png"></a><br>Additional permission details at <a xmlns:cc="http://creativecommons.org/ns#" href="/wiki/licensing/" rel="cc::morePermissions">licensing</a>.</span></div><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-9675050573301887" data-ad-slot="2763075597" class="adsbygoogle"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><noscript><link rel="stylesheet" href="/css/main.css"></noscript></body></html>
