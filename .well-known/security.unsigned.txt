@@ -1,0 +1,6 @@
+Contact: https://www.eharning.us/security/
+Encryption: https://www.eharning.us/gpg/B1DBAD54.gpg
+Encryption: openpgp4fpr:2F0AFF2EA8A01485C95B8650F0A4C0F7B1DBAD54
+Acknowledgments: https://www.eharning.us/security/
+Preferred-Languages: en
+Canonical: https://www.eharning.us/.well-known/security.txt

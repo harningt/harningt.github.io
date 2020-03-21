@@ -1,0 +1,20 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Contact: https://www.eharning.us/security/
+Encryption: https://www.eharning.us/gpg/B1DBAD54.gpg
+Encryption: openpgp4fpr:2F0AFF2EA8A01485C95B8650F0A4C0F7B1DBAD54
+Acknowledgments: https://www.eharning.us/security/
+Preferred-Languages: en
+Canonical: https://www.eharning.us/.well-known/security.txt
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCgAdFiEEwmOlss26X36kHj9ESxODHvAl+PwFAl51akcACgkQSxODHvAl
++PwaTwf/e4ILcMVjMgrRkaSq0nhoK3cHYzVhW7DLTiXeS4mctVwwbH+5efcu9iuZ
+ipg0EFVvQ2md+olwugH2o6QzGrQFzZuPV/NURxo/ucwFRKxV48jGN0nrqLM3Wv73
+r41PKjp3rW2M4KSkmRirYVbuZGQ8y0YCtaG5OzJVFeQyux/AcnJQNoEBRJHflZZI
+1MBAuMOGfubJXp71w+QovaA1HgWnX7W2c1kgQJ+0wZzlU0tH3OLoApyk0tgNomxS
+8CKsvQV/Eb0m8DVuZFP/Q4ORS2oRwCeuxCWFgx58BaIwYfx6ER7L9YzcbHPEvW/S
+VEoX7jtNn1BFkhd5wuKeRC5hnSwGlQ==
+=VNDN
+-----END PGP SIGNATURE-----
