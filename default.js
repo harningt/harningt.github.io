@@ -8,7 +8,4 @@ function loadStylesheet(src) {
 
 $(function() {
     loadStylesheet("/css/main.css");
-    if ($.gaTracker) {
-        $.gaTracker("UA-975643-2"); /* Google Analytics */
-    }
 });
